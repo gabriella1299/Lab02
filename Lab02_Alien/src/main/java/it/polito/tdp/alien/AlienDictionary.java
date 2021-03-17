@@ -7,7 +7,7 @@ public class AlienDictionary {
 
 	private List<Word> dizionario;
 
-	public AlienDictionary(List<Word> word) {
+	public AlienDictionary() {
 		super();
 		this.dizionario = new LinkedList<Word>();
 	}
@@ -37,5 +37,9 @@ public class AlienDictionary {
 			return w.getTranslation();
 		else 
 			return null;
+	}
+	
+	public void resetDictionary() {
+		this.dizionario.clear();
 	}
 }
