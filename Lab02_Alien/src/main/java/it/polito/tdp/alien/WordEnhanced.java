@@ -56,10 +56,16 @@ public class WordEnhanced {
 	@Override
 	public String toString() {
 		String s="";
+		int i=1;
 		for(String ss:translation) {
-			if(ss!=null)
-				s=s+" "+ss;
-			
+			if(ss!=null) {
+				if(i==translation.size())
+					s=s+ss;
+				else
+					s=s+ss+", ";
+			}
+				
+			i++;
 		}
 		return s;
 	}

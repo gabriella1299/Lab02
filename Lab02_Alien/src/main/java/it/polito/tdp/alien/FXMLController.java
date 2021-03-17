@@ -34,7 +34,7 @@ public class FXMLController {
     @FXML
     void doTranslate(ActionEvent event) {
     	String par=txtInserisci.getText().toLowerCase();
-    	if(par==null) {
+    	if(par=="") {
     		this.txtRisultato.setText("Inserire una parola!");
     		return;
     	}
@@ -50,7 +50,7 @@ public class FXMLController {
     	else {
     		try {
     			model.translateWord(par);
-    			this.txtRisultato.setText("La traduzione della parola "+par+ " e': "+model.ricercaWord(par).toString());
+    			this.txtRisultato.setText("Le traduzioni della parola "+par+ " sono: "+model.ricercaWord(par).toString());
     		
     		}catch(NullPointerException e) {
     			this.txtRisultato.setText("Parola inesistente!");
