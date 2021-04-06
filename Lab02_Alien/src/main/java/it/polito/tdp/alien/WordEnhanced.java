@@ -1,37 +1,60 @@
 package it.polito.tdp.alien;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WordEnhanced {
 
 	private String alienWord;
-	private List<String> translation;
-	
-	public WordEnhanced(String alienWord, List<String> translation) {
-		super();
+	private List<String> translations;
+
+
+	public WordEnhanced(String alienWord) {
+		this.translations = new ArrayList<String>();
 		this.alienWord = alienWord;
-		this.translation = translation;
 	}
-	public String getAlienWord() {
+
+	public WordEnhanced(String alienWord, String translation) {
+		this.translations = new ArrayList<String>();
+		this.alienWord = alienWord;
+		this.translations.add(translation);
+	}
+
+	public boolean compareWild(String alienWild) {
+		if (alienWord.matches(alienWild))
+			return true;
+		return false;
+	}
+
+	public String getTranslation() {
+		String s = "";
+		for (String a : translations) {
+			s += a + "\n";
+		}
+		return s;
+	}
+
+	public void setTranslation(String translation) {
+		if (!translations.contains(translation)) {
+			translations.add(translation);
+		}
+	}
+
+	public String getAlien() {
 		return alienWord;
 	}
-	public void setAlienWord(String alienWord) {
-		this.alienWord = alienWord;
-	}
-	public List<String> getTranslation() {
-		return translation;
-	}
-	public void setTranslation(List<String> translation) {
-		this.translation = translation;
-	}
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((alienWord == null) ? 0 : alienWord.hashCode());
-		result = prime * result + ((translation == null) ? 0 : translation.hashCode());
 		return result;
 	}
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -46,32 +69,9 @@ public class WordEnhanced {
 				return false;
 		} else if (!alienWord.equals(other.alienWord))
 			return false;
-		if (translation == null) {
-			if (other.translation != null)
-				return false;
-		} else if (!translation.equals(other.translation))
-			return false;
 		return true;
 	}
-	@Override
-	public String toString() {
-		String s="";
-		int i=1;
-		for(String ss:translation) {
-			if(ss!=null) {
-				if(i==translation.size())
-					s=s+ss;
-				else
-					s=s+ss+", ";
-			}
-				
-			i++;
-		}
-		return s;
-	}
-	
-	
-	
-	
-	
+
+
+
 }
